@@ -33,12 +33,12 @@ export function MdxCarousel({ children }: { children: ReactNode }) {
   }
 
   return (
-    <Carousel className="w-full sm:max-w-md md:max-w-lg mx-auto">
+    <Carousel className="w-full max-w-sm mx-auto">
       <CarouselContent className="h-full">
         {cards.map(({ header, content }, index) => (
           <CarouselItem key={index} className="h-auto">
             <Card className="h-full">
-              <CardContent className="prose flex flex-col aspect-square items-center justify-center p-6">
+              <CardContent className="prose flex flex-col items-center justify-center p-6">
                 {header}
                 {content}
               </CardContent>

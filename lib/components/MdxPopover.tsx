@@ -14,7 +14,7 @@ export function MdxPopover({ children }: { children: ReactNode }) {
   const normalChildren = childArray.filter((c) => c !== header);
 
   return (
-    <div className="pt-6 flex justify-center">
+    <div className="py-6 flex justify-center">
       <Popover>
         <PopoverTrigger asChild>
           <Button className="cursor-pointer" variant="secondary">

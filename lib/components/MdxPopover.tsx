@@ -15,7 +15,7 @@ export function MdxPopover({ children }: { children: ReactNode }) {
 
   return (
     <div className="py-6 flex justify-center">
-      <Popover>
+      <Popover defaultOpen>
         <PopoverTrigger asChild>
           <Button className="cursor-pointer" variant="secondary">
             {header}

@@ -1,47 +1,42 @@
-import AccordionDemo from './content/AccordionDemo.mdx'
-import PopoverDemo from './content/PopoverDemo.mdx'
-import CarouselDemo from './content/CarouselDemo.mdx'
-import { Playground } from './Playground'
 import { ThemeToggle } from './ThemeToggle'
+import { MdxExample } from './MdxExample'
+import './App.css'
+
+const accordionMdx = `**Click to expand**
+
+Hi! Here is some content.`
+
+const alertMdx = `###### Heads up!
+
+This component renders a styled
+alert from plain Markdown.`
+
+const tabsMdx = `#### Tab A
+This tab has content. Content about,
+perhaps, weasels.
+
+#### Tab B
+Ferrets are different from weasels.`
 
 function App() {
   return (
-    <div style={{ maxWidth: 900, margin: '0 auto', padding: '2rem' }}>
+    <div className="app">
       <ThemeToggle />
-      <h1 style={{ fontSize: '2rem', fontWeight: 'bold', marginBottom: '1.5rem' }}>
-        MDX Components Demo
-      </h1>
-
-      <section style={{ marginBottom: '2rem' }}>
-        <h2 style={{ fontSize: '1.5rem', fontWeight: 600, marginBottom: '1rem' }}>
-          Playground
-        </h2>
-        <p style={{ marginBottom: '1rem', fontSize: '0.875rem', color: 'var(--muted-foreground)' }}>
-          Edit the MDX below. <code>MdxAccordion</code>, <code>MdxCarousel</code>, and <code>MdxPopover</code> are available without imports.
-        </p>
-        <Playground />
-      </section>
-
-      <section style={{ marginBottom: '2rem' }}>
-        <h2 style={{ fontSize: '1.5rem', fontWeight: 600, marginBottom: '1rem' }}>
-          Accordion Transformer
-        </h2>
-        <AccordionDemo />
-      </section>
-
-      <section style={{ marginBottom: '2rem' }}>
-        <h2 style={{ fontSize: '1.5rem', fontWeight: 600, marginBottom: '1rem' }}>
-          Popover Transformer
-        </h2>
-        <PopoverDemo />
-      </section>
-
-      <section style={{ marginBottom: '2rem' }}>
-        <h2 style={{ fontSize: '1.5rem', fontWeight: 600, marginBottom: '1rem' }}>
-          Carousel Transformer
-        </h2>
-        <CarouselDemo />
-      </section>
+      <div className="app-header">
+        <h1>MDX Components</h1>
+        <p>Drop-in components that turn simple Markdown into interactive UI.</p>
+      </div>
+      <div className="examples-grid">
+        <div>
+          <MdxExample component="MdxAccordion" mdx={accordionMdx} />
+        </div>
+        <div>
+          <MdxExample component="MdxAlert" attrs='variant="info"' mdx={alertMdx} />
+        </div>
+        <div>
+          <MdxExample component="MdxTabs" mdx={tabsMdx} />
+        </div>
+      </div>
     </div>
   )
 }

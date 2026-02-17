@@ -15,18 +15,19 @@ import { scanForTag } from "../utils";
  */
 export function MdxAccordion({ children }: { children: ReactNode }) {
   const childArray = Children.toArray(children);
-  const hrLocation = childArray.findIndex(scanForTag("hr"));
-  if (hrLocation === -1) {
-    // TODO: just use the first element as the header in this case
-    console.error("MdxAccordion requires an <hr> (---) to separate header from content");
-    return <p>ERROR</p>;
+  let hrLocation = childArray.findIndex(scanForTag("hr"));
+  let hrFound = hrLocation !== -1;
+  if (!hrFound) {
+    // if there is no hr, just use the first child as the header
+    hrLocation = 1;
   }
   const header = childArray.slice(0, hrLocation);
-  const normalChildren = childArray.slice(hrLocation + 1);
+  const normalChildren = childArray.slice(hrLocation + (hrFound ? 1 : 0));
   return (
     <Accordion
       type="single"
       collapsible
+      defaultValue="item-1"
       className="w-full border border-border px-4 rounded-lg my-4"
     >
       <AccordionItem value="item-1">

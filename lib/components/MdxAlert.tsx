@@ -1,21 +1,27 @@
-import { Alert, AlertTitle, AlertDescription } from "@/components/ui/alert";
-import { Info } from "lucide-react";
-import { Children, type ReactNode } from "react";
-import { scanForTag } from "../utils";
+import { Alert, AlertTitle, AlertDescription } from '@/components/ui/alert';
+import { Info } from 'lucide-react';
+import { Children, type ReactNode } from 'react';
+import { scanForTag } from '../utils';
 
 /**
  * This component takes HTML elements (from MDX) and turns them into an alert.
  * The first `<h6>` (`######` in Markdown) becomes the alert title.
  * All remaining children become the alert description.
  */
-export function MdxAlert({ children, variant }: { children: ReactNode; variant?: "default" | "info" | "destructive" }) {
+export function MdxAlert({
+  children,
+  variant,
+}: {
+  children: ReactNode;
+  variant?: 'default' | 'info' | 'destructive';
+}) {
   const childArray = Children.toArray(children);
-  const titleChild = childArray.find(scanForTag("h6"));
+  const titleChild = childArray.find(scanForTag('h6'));
   const descriptionChildren = childArray.filter((c) => c !== titleChild);
 
   return (
     <Alert variant={variant} className="my-4">
-      {variant === "info" && <Info />}
+      {variant === 'info' && <Info />}
       {titleChild && (
         <AlertTitle>
           {(titleChild as React.ReactElement<{ children: ReactNode }>).props.children}

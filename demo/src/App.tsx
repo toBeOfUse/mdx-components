@@ -1,24 +1,24 @@
-import { useState } from 'react'
-import { ThemeToggle } from './ThemeToggle'
-import { MdxExample } from './MdxExample'
-import { Playground } from './Playground'
-import './App.css'
+import { useState } from 'react';
+import { ThemeToggle } from './ThemeToggle';
+import { MdxExample } from './MdxExample';
+import { Playground } from './Playground';
+import './App.css';
 
 const accordionMdx = `**Click to expand**
 
-Hi! Here is some content.`
+Hi! Here is some content.`;
 
 const alertMdx = `###### Heads up!
 
 This component renders a styled
-alert from plain Markdown.`
+alert from plain Markdown.`;
 
 const tabsMdx = `#### Tab A
 This tab has content. Content about,
 perhaps, weasels.
 
 #### Tab B
-Ferrets are different from weasels.`
+Ferrets are different from weasels.`;
 
 const snippets: Record<string, string> = {
   Accordion: `<MdxAccordion>
@@ -62,7 +62,7 @@ Navigate with the arrow buttons.
 This content appears inside a popover.
 
 </MdxPopover>`,
-}
+};
 
 function App() {
   const [mdx, setMdx] = useState(`<MdxAlert variant="info">
@@ -71,31 +71,31 @@ function App() {
 
 Add some content in the editor to see what it looks like when rendered.
 
-</MdxAlert>`)
+</MdxAlert>`);
 
   const appendSnippet = (name: string) => {
-    setMdx((prev) => (prev ? prev + '\n\n' : '') + snippets[name])
-  }
+    setMdx((prev) => (prev ? prev + '\n\n' : '') + snippets[name]);
+  };
 
   return (
     <div className="app">
       <ThemeToggle />
       <div className="above-the-fold">
-      <div className="app-header">
-        <h1>MDX Components</h1>
-        <p>Drop-in components that turn simple Markdown into interactive UI.</p>
-      </div>
-      <div className="examples-grid">
-        <div>
-          <MdxExample component="MdxAccordion" mdx={accordionMdx} />
+        <div className="app-header">
+          <h1>MDX Components</h1>
+          <p>Drop-in components that turn simple Markdown into interactive UI.</p>
         </div>
-        <div>
-          <MdxExample component="MdxAlert" attrs='variant="info"' mdx={alertMdx} />
+        <div className="examples-grid">
+          <div>
+            <MdxExample component="MdxAccordion" mdx={accordionMdx} />
+          </div>
+          <div>
+            <MdxExample component="MdxAlert" attrs='variant="info"' mdx={alertMdx} />
+          </div>
+          <div>
+            <MdxExample component="MdxTabs" mdx={tabsMdx} />
+          </div>
         </div>
-        <div>
-          <MdxExample component="MdxTabs" mdx={tabsMdx} />
-        </div>
-      </div>
       </div>
 
       <div className="sandbox-section">
@@ -111,7 +111,7 @@ Add some content in the editor to see what it looks like when rendered.
         <Playground value={mdx} onChange={setMdx} />
       </div>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;

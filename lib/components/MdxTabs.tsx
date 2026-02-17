@@ -1,6 +1,6 @@
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Children, type ReactNode } from "react";
-import { scanForTag } from "../utils";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { Children, type ReactNode } from 'react';
+import { scanForTag } from '../utils';
 
 /**
  * This component takes HTML elements (from MDX) and turns them into tabs.
@@ -9,7 +9,7 @@ import { scanForTag } from "../utils";
  */
 export function MdxTabs({ children }: { children: ReactNode }) {
   const childArray = Children.toArray(children);
-  const isH4 = scanForTag("h4");
+  const isH4 = scanForTag('h4');
 
   const tabs: { label: ReactNode; content: ReactNode[] }[] = [];
 
@@ -23,7 +23,7 @@ export function MdxTabs({ children }: { children: ReactNode }) {
   }
 
   if (tabs.length === 0) {
-    console.error("MdxTabs requires at least one <h4> (#### in markdown) to create tabs");
+    console.error('MdxTabs requires at least one <h4> (#### in markdown) to create tabs');
     return <p>ERROR</p>;
   }
 

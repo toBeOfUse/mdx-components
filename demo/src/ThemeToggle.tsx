@@ -1,7 +1,7 @@
-import { useTheme } from './theme'
+import { useTheme } from './theme';
 
 export function ThemeToggle() {
-  const { isDark, toggle } = useTheme()
+  const { isDark, toggle } = useTheme();
 
   return (
     <button
@@ -28,7 +28,16 @@ export function ThemeToggle() {
     >
       {isDark ? (
         // Sun icon
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <svg
+          width="20"
+          height="20"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        >
           <circle cx="12" cy="12" r="4" />
           <path d="M12 2v2" />
           <path d="M12 20v2" />
@@ -41,10 +50,19 @@ export function ThemeToggle() {
         </svg>
       ) : (
         // Moon icon
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <svg
+          width="20"
+          height="20"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        >
           <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z" />
         </svg>
       )}
     </button>
-  )
+  );
 }

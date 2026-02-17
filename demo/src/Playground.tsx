@@ -1,9 +1,9 @@
-import { useEffect, useState, useCallback, Component, type ReactNode } from 'react'
-import { evaluate } from '@mdx-js/mdx'
-import * as runtime from 'react/jsx-runtime'
-import Editor from '@monaco-editor/react'
-import { MdxAccordion, MdxAlert, MdxCarousel, MdxPopover, MdxTabs } from '../../'
-import { useTheme } from './theme'
+import { useEffect, useState, useCallback, Component, type ReactNode } from 'react';
+import { evaluate } from '@mdx-js/mdx';
+import * as runtime from 'react/jsx-runtime';
+import Editor from '@monaco-editor/react';
+import { MdxAccordion, MdxAlert, MdxCarousel, MdxPopover, MdxTabs } from '../../';
+import { useTheme } from './theme';
 
 const defaultValue = `<MdxAccordion>
 
@@ -43,26 +43,25 @@ You can include **bold text**, *italics*, lists, and other Markdown.
 
 Use the arrow buttons to navigate between slides.
 
-</MdxCarousel>`
+</MdxCarousel>`;
 
-const components = { MdxAccordion, MdxAlert, MdxCarousel, MdxPopover, MdxTabs }
+const components = { MdxAccordion, MdxAlert, MdxCarousel, MdxPopover, MdxTabs };
 
-const importLine = `import { MdxAccordion, MdxAlert, MdxCarousel, MdxPopover, MdxTabs } from 'components-for-mdx';`
-
+const importLine = `import { MdxAccordion, MdxAlert, MdxCarousel, MdxPopover, MdxTabs } from 'components-for-mdx';`;
 
 class ErrorBoundary extends Component<
   { resetKey: string; children: ReactNode },
   { error: Error | null }
 > {
-  state: { error: Error | null } = { error: null }
+  state: { error: Error | null } = { error: null };
 
   static getDerivedStateFromError(error: Error) {
-    return { error }
+    return { error };
   }
 
   componentDidUpdate(prevProps: { resetKey: string }) {
     if (prevProps.resetKey !== this.props.resetKey && this.state.error) {
-      this.setState({ error: null })
+      this.setState({ error: null });
     }
   }
 
@@ -72,41 +71,52 @@ class ErrorBoundary extends Component<
         <pre style={{ color: '#ef4444', whiteSpace: 'pre-wrap', fontSize: '0.875rem' }}>
           {this.state.error.message}
         </pre>
-      )
+      );
     }
-    return this.props.children
+    return this.props.children;
   }
 }
 
-export function Playground({ value: controlledValue, onChange }: { value?: string; onChange?: (v: string) => void } = {}) {
-  const { isDark } = useTheme()
-  const isControlled = controlledValue !== undefined
-  const [internalValue, setInternalValue] = useState(defaultValue)
-  const value = isControlled ? controlledValue : internalValue
-  const setValue = (v: string) => { if (isControlled) { onChange?.(v) } else { setInternalValue(v) } }
-  const [result, setResult] = useState<ReactNode>(null)
-  const [error, setError] = useState<string | null>(null)
+export function Playground({
+  value: controlledValue,
+  onChange,
+}: { value?: string; onChange?: (v: string) => void } = {}) {
+  const { isDark } = useTheme();
+  const isControlled = controlledValue !== undefined;
+  const [internalValue, setInternalValue] = useState(defaultValue);
+  const value = isControlled ? controlledValue : internalValue;
+  const setValue = (v: string) => {
+    if (isControlled) {
+      onChange?.(v);
+    } else {
+      setInternalValue(v);
+    }
+  };
+  const [result, setResult] = useState<ReactNode>(null);
+  const [error, setError] = useState<string | null>(null);
 
   const compileAndRun = useCallback(async (source: string) => {
-    const stripped = source.replace(/^import\s+.*?['"](components-for-mdx)['"]\s*\n?/gm, '')
+    const stripped = source.replace(/^import\s+.*?['"](components-for-mdx)['"]\s*\n?/gm, '');
     try {
       const { default: Content } = await evaluate(stripped, {
         ...runtime,
         baseUrl: window.location.href,
         useMDXComponents: () => components,
-      })
-      setResult(<Content />)
-      setError(null)
+      });
+      setResult(<Content />);
+      setError(null);
     } catch (err) {
-      setError(err instanceof Error ? err.message : String(err))
-      setResult(null)
+      setError(err instanceof Error ? err.message : String(err));
+      setResult(null);
     }
-  }, [])
+  }, []);
 
-  useEffect(() => { compileAndRun(value) }, [value])
+  useEffect(() => {
+    compileAndRun(value);
+  }, [value]);
 
   return (
-    <div style={{ display: 'flex', gap: '1rem', height:'100%', minHeight:400 }}>
+    <div style={{ display: 'flex', gap: '1rem', height: '100%', minHeight: 400 }}>
       <div
         style={{
           flex: 1,
@@ -117,7 +127,18 @@ export function Playground({ value: controlledValue, onChange }: { value?: strin
           flexDirection: 'column',
         }}
       >
-        <div style={{ fontSize: '0.8125rem', padding: '0.5rem 0.75rem', borderBottom: '1px solid var(--border)', fontFamily: 'ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace', color: 'var(--muted-foreground)', userSelect: 'none', background: isDark ? '#1e1e1e' : '#ffffff', flexShrink: 0 }}>
+        <div
+          style={{
+            fontSize: '0.8125rem',
+            padding: '0.5rem 0.75rem',
+            borderBottom: '1px solid var(--border)',
+            fontFamily: 'ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace',
+            color: 'var(--muted-foreground)',
+            userSelect: 'none',
+            background: isDark ? '#1e1e1e' : '#ffffff',
+            flexShrink: 0,
+          }}
+        >
           {importLine}
         </div>
         <Editor
@@ -156,11 +177,9 @@ export function Playground({ value: controlledValue, onChange }: { value?: strin
             {error}
           </pre>
         ) : (
-          <ErrorBoundary resetKey={value}>
-            {result}
-          </ErrorBoundary>
+          <ErrorBoundary resetKey={value}>{result}</ErrorBoundary>
         )}
       </div>
     </div>
-  )
+  );
 }

@@ -3,9 +3,9 @@ import {
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
-} from "@/components/ui/accordion";
-import { Children, type ReactNode } from "react";
-import { scanForTag } from "../utils";
+} from '@/components/ui/accordion';
+import { Children, type ReactNode } from 'react';
+import { scanForTag } from '../utils';
 
 /**
  * This component takes some HTML elements, like the ones that the Markdown in
@@ -15,7 +15,7 @@ import { scanForTag } from "../utils";
  */
 export function MdxAccordion({ children }: { children: ReactNode }) {
   const childArray = Children.toArray(children);
-  let hrLocation = childArray.findIndex(scanForTag("hr"));
+  let hrLocation = childArray.findIndex(scanForTag('hr'));
   let hrFound = hrLocation !== -1;
   if (!hrFound) {
     // if there is no hr, just use the first child as the header

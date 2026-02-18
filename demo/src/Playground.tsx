@@ -85,13 +85,16 @@ export function Playground({
   const isControlled = controlledValue !== undefined;
   const [internalValue, setInternalValue] = useState(defaultValue);
   const value = isControlled ? controlledValue : internalValue;
-  const setValue = (v: string) => {
-    if (isControlled) {
-      onChange?.(v);
-    } else {
-      setInternalValue(v);
-    }
-  };
+  const setValue = useCallback(
+    (v: string) => {
+      if (isControlled) {
+        onChange?.(v);
+      } else {
+        setInternalValue(v);
+      }
+    },
+    [isControlled, onChange],
+  );
   const [result, setResult] = useState<ReactNode>(null);
   const [error, setError] = useState<string | null>(null);
 

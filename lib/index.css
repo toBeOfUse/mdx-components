@@ -1,4 +1,9 @@
-@import 'tailwindcss';
+@layer theme, base, components, utilities;
+@import "tailwindcss/theme.css" layer(theme);
+/* note: not importing preflight so as not to conflict with whatever styles the
+user is already using to format their mdx files */
+@import "tailwindcss/utilities.css" layer(utilities);
+
 @plugin "@tailwindcss/typography";
 @import 'tw-animate-css';
 @import 'shadcn/tailwind.css';

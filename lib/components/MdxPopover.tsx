@@ -17,7 +17,10 @@ export function MdxPopover({ children }: { children: ReactNode }) {
     <div className="py-6 flex justify-center">
       <Popover defaultOpen>
         <PopoverTrigger asChild>
-          <Button className="cursor-pointer" variant="secondary">
+          <Button
+            className="cursor-pointer outline-none border-solid border-border bg-transparent hover:bg-muted"
+            variant="secondary"
+          >
             {header}
           </Button>
         </PopoverTrigger>

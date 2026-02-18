@@ -127,7 +127,7 @@ export function Playground({
           flexDirection: 'column',
         }}
       >
-        <div
+        <pre
           style={{
             fontSize: '0.8125rem',
             padding: '0.5rem 0.75rem',
@@ -137,10 +137,12 @@ export function Playground({
             userSelect: 'none',
             background: isDark ? '#1e1e1e' : '#ffffff',
             flexShrink: 0,
+            overflowX: 'auto',
+            scrollbarWidth: 'thin',
           }}
         >
           {importLine}
-        </div>
+        </pre>
         <Editor
           height="100%"
           value={value}

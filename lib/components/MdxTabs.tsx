@@ -31,7 +31,7 @@ export function MdxTabs({ children }: { children: ReactNode }) {
     <Tabs defaultValue="tab-0" className="w-full my-4">
       <TabsList>
         {tabs.map((tab, i) => (
-          <TabsTrigger key={i} value={`tab-${i}`}>
+          <TabsTrigger key={i} value={`tab-${i}`} className="bg-transparent">
             {tab.label}
           </TabsTrigger>
         ))}

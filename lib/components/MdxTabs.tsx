@@ -4,31 +4,42 @@ import { scanForTag } from '../utils';
 
 /**
  * This component takes HTML elements (from MDX) and turns them into tabs.
- * Each `<h4>` (`####` in Markdown) starts a new tab. The heading text becomes
- * the tab label, and everything until the next `<h4>` becomes the tab content.
+ *
+ * Tabs are separated by horizontal rules (<hr />s, produced by `---` in
+ * Markdown). The first child of each section becomes the tab label, and the
+ * remaining children become the tab content.
+ *
+ * Additionally, any <h1> (produced by `# Text` in Markdown) will be treated as
+ * the label of a new tab, with the following elements (until the next <h1> or
+ * <hr>) becoming the content of the tab.
  */
 export function MdxTabs({ children }: { children: ReactNode }) {
   const childArray = Children.toArray(children);
-  const isH4 = scanForTag('h4');
+  const isHr = scanForTag('hr');
+  const isH1 = scanForTag('h1');
 
-  const tabs: { label: ReactNode; content: ReactNode[] }[] = [];
-
+  const sections: ReactNode[][] = [[]];
   for (const child of childArray) {
-    if (isH4(child)) {
-      const heading = child as React.ReactElement<{ children: ReactNode }>;
-      tabs.push({ label: heading.props.children, content: [] });
-    } else if (tabs.length > 0) {
-      tabs[tabs.length - 1].content.push(child);
+    if (isHr(child)) {
+      sections.push([]);
+    } else if (isH1(child)) {
+      sections.push([{ ...(child as React.ReactElement), type: 'span' }]);
+    } else {
+      sections[sections.length - 1].push(child);
     }
   }
 
+  const tabs = sections
+    .filter((s) => s.length > 0)
+    .map((s) => ({ label: s[0], content: s.slice(1) }));
+
   if (tabs.length === 0) {
-    console.error('MdxTabs requires at least one <h4> (#### in markdown) to create tabs');
-    return <p>ERROR</p>;
+    console.error('MdxTabs requires at least one child to create tabs');
+    return <p className="text-destructive">MdxTabs requires at least one child to create tabs.</p>;
   }
 
   return (
-    <Tabs defaultValue="tab-0" className="w-full my-4">
+    <Tabs defaultValue="tab-0" className="w-full my-4 rounded-lg border px-4 py-3">
       <TabsList>
         {tabs.map((tab, i) => (
           <TabsTrigger key={i} value={`tab-${i}`} className="bg-transparent">

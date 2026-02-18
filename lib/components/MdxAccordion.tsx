@@ -9,9 +9,18 @@ import { scanForTag } from '../utils';
 
 /**
  * This component takes some HTML elements, like the ones that the Markdown in
- * MDX files is turned into, and turns them into an accordion. The content
- * before the first hr (`---` in markdown) becomes the external label of the
- * accordion. The rest of the children become the content within.
+ * MDX files is turned into, and turns them into an accordion.
+ *
+ * Accordions have some content that is always displayed (the label) and some
+ * content that is hidden until the label is clicked. This component applies the
+ * following rules to its children:
+ *
+ * 1. If there is an horizontal rule (<hr /> produced by a Markdown `---`), then
+ *    everything before the horizontal rule is treated as a label, and
+ *    everything after is treated as content. (This allows the label to contain
+ *    multiple elements.)
+ * 2. Otherwise, the first child element is treated as the label, and everything
+ *    after is treated as content.
  */
 export function MdxAccordion({
   children,

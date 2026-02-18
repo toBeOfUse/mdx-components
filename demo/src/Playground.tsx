@@ -1,4 +1,5 @@
 import { useEffect, useState, useCallback, Component, type ReactNode } from 'react';
+import styles from './Playground.module.css';
 import { evaluate } from '@mdx-js/mdx';
 import * as runtime from 'react/jsx-runtime';
 import Editor from '@monaco-editor/react';
@@ -22,10 +23,10 @@ Markdown elements into interactive UI widgets.
 
 <MdxPopover>
 
-##### More info
+More info
 
-The **MdxPopover** finds an \`<h5>\` among its children and uses
-it as the button label. Everything else becomes the popover body.
+The **MdxPopover** uses its first child as the button label.
+Everything else becomes the popover body.
 
 </MdxPopover>
 
@@ -119,31 +120,9 @@ export function Playground({
   }, [value]);
 
   return (
-    <div style={{ display: 'flex', gap: '1rem', height: '100%', minHeight: 400 }}>
-      <div
-        style={{
-          flex: 1,
-          border: '1px solid var(--border)',
-          borderRadius: '0.5rem',
-          overflow: 'hidden',
-          display: 'flex',
-          flexDirection: 'column',
-        }}
-      >
-        <pre
-          style={{
-            fontSize: '0.8125rem',
-            padding: '0.5rem 0.75rem',
-            borderBottom: '1px solid var(--border)',
-            fontFamily: 'ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace',
-            color: 'var(--muted-foreground)',
-            userSelect: 'none',
-            background: isDark ? '#1e1e1e' : '#ffffff',
-            flexShrink: 0,
-            overflowX: 'auto',
-            scrollbarWidth: 'thin',
-          }}
-        >
+    <div className={styles.playground}>
+      <div className={styles.editorPane}>
+        <pre className={styles.importLine} style={{ background: isDark ? '#1e1e1e' : '#ffffff' }}>
           {importLine}
         </pre>
         <Editor
@@ -167,20 +146,9 @@ export function Playground({
           }}
         />
       </div>
-      <div
-        style={{
-          flex: 1,
-          padding: '1rem',
-          border: '1px solid var(--border)',
-          borderRadius: '0.5rem',
-          overflow: 'auto',
-          textAlign: 'left',
-        }}
-      >
+      <div className={styles.previewPane}>
         {error ? (
-          <pre style={{ color: '#ef4444', whiteSpace: 'pre-wrap', fontSize: '0.875rem' }}>
-            {error}
-          </pre>
+          <pre className={styles.errorText}>{error}</pre>
         ) : (
           <ErrorBoundary resetKey={value}>{result}</ErrorBoundary>
         )}

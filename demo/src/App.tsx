@@ -9,48 +9,49 @@ const accordionMdx = `**Click to expand**
 
 Hi! Here is some content.`;
 
-const alertMdx = `###### Heads up!
+const alertMdx = `Heads up!
 
 This component renders a styled
 alert from plain Markdown.`;
 
-const tabsMdx = `#### Tab A
-This tab has content. Content about,
-perhaps, weasels.
+const tabsMdx = `# Tab A
 
-#### Tab B
-Ferrets are different from weasels.`;
+This tab has content.
+
+# Tab B
+
+This tab has different content.`;
 
 const snippets: Record<string, string> = {
   Accordion: `<MdxAccordion>
 
 **Click to expand**
 
----
-
 Here is some hidden content revealed by the accordion.
 
 </MdxAccordion>`,
   Info: `<MdxInfo>
 
-###### Heads up!
+Heads up!
 
 This is an informational alert rendered from Markdown.
 
 </MdxInfo>`,
   Warning: `<MdxWarning>
 
-###### Watch out!
+Watch out!
 
 This is a warning alert rendered from Markdown.
 
 </MdxWarning>`,
   Tabs: `<MdxTabs>
 
-#### Tab A
+# Tab A
+
 Content for the first tab.
 
-#### Tab B
+# Tab B
+
 Content for the second tab.
 
 </MdxTabs>`,
@@ -65,7 +66,7 @@ Navigate with the arrow buttons.
 </MdxCarousel>`,
   Popover: `<MdxPopover>
 
-##### Click me
+Click me
 
 This content appears inside a popover.
 
@@ -75,7 +76,7 @@ This content appears inside a popover.
 function App() {
   const [mdx, setMdx] = useState(`<MdxInfo>
 
-###### Hi!
+Hi!
 
 Add some content in the editor to see what it looks like when rendered.
 

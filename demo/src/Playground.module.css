@@ -1,0 +1,53 @@
+.playground {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  height: 100%;
+  min-height: 400px;
+}
+
+.editorPane {
+  flex: 1;
+  border: 1px solid var(--border);
+  border-radius: 0.5rem;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.importLine {
+  font-size: 0.8125rem;
+  padding: 0.5rem 0.75rem;
+  border-bottom: 1px solid var(--border);
+  font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+  color: var(--muted-foreground);
+  user-select: none;
+  flex-shrink: 0;
+  overflow-x: auto;
+  scrollbar-width: thin;
+}
+
+.previewPane {
+  flex: 1;
+  padding: 1rem;
+  border: 1px solid var(--border);
+  border-radius: 0.5rem;
+  overflow: auto;
+  text-align: left;
+}
+
+.errorText {
+  color: #ef4444;
+  white-space: pre-wrap;
+  font-size: 0.875rem;
+}
+
+@media (max-width: 768px) {
+  .playground {
+    flex-direction: column;
+  }
+
+  .editorPane {
+    min-height: 300px;
+  }
+}

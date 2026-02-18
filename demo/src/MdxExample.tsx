@@ -1,9 +1,9 @@
 import { useEffect, useState, useCallback, Component, type ReactNode } from 'react';
+import styles from './MdxExample.module.css';
 import { evaluate } from '@mdx-js/mdx';
 import * as runtime from 'react/jsx-runtime';
 import { MdxAccordion, MdxInfo, MdxWarning, MdxCarousel, MdxPopover, MdxTabs } from '../../';
 
-const mono = 'ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace';
 const components = { MdxAccordion, MdxInfo, MdxWarning, MdxCarousel, MdxPopover, MdxTabs };
 
 class ErrorBoundary extends Component<
@@ -67,39 +67,13 @@ export function MdxExample({
   }, [fullSource, compile]);
 
   return (
-    <div
-      className="mdx-example"
-      style={{
-        border: '1px solid var(--border)',
-        borderRadius: '0.5rem',
-        padding: 12,
-        display: 'grid',
-        gridTemplateColumns: '1fr auto 1fr',
-        alignItems: 'center',
-        gap: '1rem',
-      }}
-    >
+    <div className={styles.mdxExample}>
       {/* Source */}
-      <pre
-        style={{
-          margin: 0,
-          padding: '0.875rem 1rem',
-          fontSize: '0.8125rem',
-          lineHeight: 1.55,
-          fontFamily: mono,
-          color: 'var(--foreground)',
-          whiteSpace: 'pre',
-          tabSize: 2,
-          background: 'var(--muted)',
-          overflow: 'auto',
-          alignSelf: 'center',
-        }}
-      >
-        {mdx.trim()}
-      </pre>
+      <pre className={styles.source}>{mdx.trim()}</pre>
 
       {/* Arrow */}
       <svg
+        className={styles.arrow}
         width="24"
         height="24"
         viewBox="0 0 24 24"
@@ -108,28 +82,15 @@ export function MdxExample({
         strokeWidth="2"
         strokeLinecap="round"
         strokeLinejoin="round"
-        style={{ flexShrink: 0 }}
       >
         <path d="M5 12h14" />
         <path d="m12 5 7 7-7 7" />
       </svg>
 
       {/* Rendered output */}
-      <div
-        style={{
-          overflow: 'auto',
-          alignSelf: 'stretch',
-          display: 'flex',
-          flexDirection: 'column',
-          justifyContent: 'center',
-        }}
-      >
+      <div className={styles.preview}>
         {error ? (
-          <pre
-            style={{ color: '#ef4444', whiteSpace: 'pre-wrap', fontSize: '0.8125rem', margin: 0 }}
-          >
-            {error}
-          </pre>
+          <pre className={styles.errorText}>{error}</pre>
         ) : (
           <ErrorBoundary resetKey={fullSource}>{result}</ErrorBoundary>
         )}

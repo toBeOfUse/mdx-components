@@ -2,7 +2,8 @@ import { useState } from 'react';
 import { ThemeToggle } from './ThemeToggle';
 import { MdxExample } from './MdxExample';
 import { Playground } from './Playground';
-import './App.css';
+import './global.css';
+import styles from './App.module.css';
 
 const accordionMdx = `**Click to expand**
 
@@ -85,14 +86,14 @@ Add some content in the editor to see what it looks like when rendered.
   };
 
   return (
-    <div className="app">
+    <div className={styles.app}>
       <ThemeToggle />
-      <div className="above-the-fold">
-        <div className="app-header">
+      <div className={styles.aboveTheFold}>
+        <div className={styles.appHeader}>
           <h1>MDX Components</h1>
           <p>Drop-in components that turn simple Markdown into interactive UI.</p>
         </div>
-        <div className="examples-grid">
+        <div className={styles.examplesGrid}>
           <div>
             <MdxExample component="MdxAccordion" mdx={accordionMdx} attrs="defaultOpen" />
           </div>
@@ -105,12 +106,12 @@ Add some content in the editor to see what it looks like when rendered.
         </div>
       </div>
 
-      <div className="sandbox-section">
+      <div className={styles.sandboxSection}>
         <h2>Sandbox</h2>
         <p>Try it out - click a component to add it, then edit freely.</p>
-        <div className="snippet-buttons">
+        <div className={styles.snippetButtons}>
           {Object.keys(snippets).map((name) => (
-            <button key={name} className="snippet-btn" onClick={() => appendSnippet(name)}>
+            <button key={name} className={styles.snippetBtn} onClick={() => appendSnippet(name)}>
               + {name}
             </button>
           ))}

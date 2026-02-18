@@ -1,0 +1,54 @@
+.mdxExample {
+  border: 1px solid var(--border);
+  border-radius: 0.5rem;
+  padding: 12px;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 1rem;
+}
+
+.source {
+  margin: 0;
+  padding: 0.875rem 1rem;
+  font-size: 0.8125rem;
+  line-height: 1.55;
+  font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+  color: var(--foreground);
+  white-space: pre;
+  tab-size: 2;
+  background: var(--muted);
+  overflow: auto;
+  align-self: center;
+}
+
+.arrow {
+  flex-shrink: 0;
+}
+
+.preview {
+  overflow: auto;
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.errorText {
+  color: #ef4444;
+  white-space: pre-wrap;
+  font-size: 0.8125rem;
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  .mdxExample {
+    grid-template-columns: 1fr;
+  }
+
+  .arrow {
+    transform: rotate(90deg);
+    justify-self: center;
+    margin-bottom: -12px;
+  }
+}

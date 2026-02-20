@@ -10,10 +10,12 @@
     "dev:lib": "npm run build -- --watch",
     "dev:demo": "npm run dev --workspace=packages/demo",
     "dev": "concurrently npm:dev:*",
-    "format": "prettier --write \"packages/**/*.{ts,tsx,css,json}\" \"*.json\""
+    "format": "prettier --write \"packages/**/*.{ts,tsx,css,json}\" \"*.json\"",
+    "publish": "cpy Readme.md packages/mdx-ui/ && npm publish --access=public --workspace=packages/mdx-ui"
   },
   "devDependencies": {
     "concurrently": "^9.2.1",
+    "cpy-cli": "^7.0.0",
     "prettier": "^3.8.1"
   }
 }

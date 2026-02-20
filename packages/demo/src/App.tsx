@@ -114,9 +114,11 @@ function App() {
             <div className={styles.stepContent}>
               <h3>Let's Go</h3>
               <p>In your terminal:</p>
-              <pre className={styles.stepCode}>npm i mdx-ui</pre>
+              <pre className={styles.stepCode}>npm i @tobeofuse/mdx-ui</pre>
               <p>In an MDX file:</p>
-              <pre className={styles.stepCode}>{`import { MdxWhatever } from 'mdx-ui'`}</pre>
+              <pre
+                className={styles.stepCode}
+              >{`import { MdxWhatever } from '@tobeofuse/mdx-ui'`}</pre>
               <p>Elsewhere in the MDX file:</p>
               <pre className={styles.stepCode}>
                 {`<MdxWhatever>\n  Your Content Here\n</MdxWhatever>`}

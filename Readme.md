@@ -20,6 +20,8 @@ You'll get a component like this:
 
 ![A mouse clicks back and forth between Tab A and Tab B.](tabs.gif)
 
+[Here](https://tobeofuse.github.io/mdx-ui) is a demo.
+
 ## How It Works
 
 When MDX parses the file, it turns Markdown into React elements that correspond to standard DOM elements like `<p>`, `<h1>` and so on. These elements are passed to any actual components you use in your MDX as children. This library uses `React.Children` to inspect the children that are passed in and slot them into Shadcn components. [Radix UI](https://github.com/radix-ui/primitives/blob/22473d16404bfd446305db5b6c9308aece99fdec/packages/react/slot/src/slot.tsx#L50) uses a similar approach to slots internally, and [here](https://sandroroth.com/blog/react-slots/) is a blog post I found that explains the technique in detail. The only thing that this library does differently than those examples is that it looks for normal elements like `<p>` instead of special slot elements like `<CardHeader>`.

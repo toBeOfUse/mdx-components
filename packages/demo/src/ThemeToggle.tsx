@@ -1,30 +1,14 @@
+import { FloatingButton } from './FloatingButton';
 import { useTheme } from './theme';
 
 export function ThemeToggle() {
   const { isDark, toggle } = useTheme();
 
   return (
-    <button
+    <FloatingButton
       onClick={toggle}
       aria-label={`Switch to ${isDark ? 'light' : 'dark'} mode`}
       title={`Switch to ${isDark ? 'light' : 'dark'} mode`}
-      style={{
-        position: 'fixed',
-        top: '1rem',
-        right: '1rem',
-        zIndex: 50,
-        display: 'inline-flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        width: 40,
-        height: 40,
-        borderRadius: '0.5rem',
-        border: '1px solid var(--border)',
-        background: 'var(--secondary)',
-        color: 'var(--foreground)',
-        cursor: 'pointer',
-        transition: 'background 150ms, color 150ms',
-      }}
     >
       {isDark ? (
         // Sun icon
@@ -63,6 +47,6 @@ export function ThemeToggle() {
           <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z" />
         </svg>
       )}
-    </button>
+    </FloatingButton>
   );
 }

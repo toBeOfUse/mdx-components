@@ -16,6 +16,10 @@
   margin-bottom: 1rem;
 }
 
+:global(.dark) .githubIcon {
+  filter: invert(1);
+}
+
 .examplesGrid {
   display: flex;
   flex-direction: column;
@@ -206,8 +210,6 @@
     grid-template-columns: 2.5rem 1fr;
     column-gap: 0.75rem;
   }
-
-
 }
 
 .sandboxSection {

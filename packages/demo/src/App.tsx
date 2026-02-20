@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
+import { FloatingButton } from './FloatingButton';
 import { ThemeToggle } from './ThemeToggle';
 import { MdxExample } from './MdxExample';
 import { Playground } from './Playground';
@@ -53,6 +54,15 @@ function App() {
   return (
     <div className={styles.app}>
       <ThemeToggle />
+      <FloatingButton
+        href="https://github.com/toBeOfUse/mdx-ui"
+        target="_blank"
+        aria-label="View on GitHub"
+        title="View on GitHub"
+        style={{ right: '3.75rem' }}
+      >
+        <img src="github.svg" width={20} height={20} className={styles.githubIcon} />
+      </FloatingButton>
       <div className={styles.aboveTheFold}>
         <div className={styles.appHeader}>
           <h1>MDX UI</h1>

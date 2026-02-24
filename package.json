@@ -7,7 +7,7 @@
   ],
   "scripts": {
     "build": "npm run build --workspace=packages/mdx-ui",
-    "dev:lib": "npm run build -- --watch",
+    "dev:lib": "npm run build --workspace=packages/mdx-ui -- --watch",
     "dev:demo": "npm run dev --workspace=packages/demo",
     "dev": "concurrently npm:dev:*",
     "format": "prettier --write \"packages/**/*.{ts,tsx,css,json}\" \"*.json\"",

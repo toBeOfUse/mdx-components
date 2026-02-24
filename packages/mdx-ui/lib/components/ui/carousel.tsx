@@ -117,7 +117,7 @@ function Carousel({
     >
       <div
         onKeyDownCapture={handleKeyDown}
-        className={cn('relative', className)}
+        className={cn('mdxui:relative', className)}
         role="region"
         aria-roledescription="carousel"
         data-slot="carousel"
@@ -133,9 +133,13 @@ function CarouselContent({ className, ...props }: React.ComponentProps<'div'>) {
   const { carouselRef, orientation } = useCarousel();
 
   return (
-    <div ref={carouselRef} className="overflow-hidden" data-slot="carousel-content">
+    <div ref={carouselRef} className="mdxui:overflow-hidden" data-slot="carousel-content">
       <div
-        className={cn('flex', orientation === 'horizontal' ? '-ml-4' : '-mt-4 flex-col', className)}
+        className={cn(
+          'mdxui:flex',
+          orientation === 'horizontal' ? 'mdxui:-ml-4' : 'mdxui:-mt-4 mdxui:flex-col',
+          className,
+        )}
         {...props}
       />
     </div>
@@ -151,8 +155,8 @@ function CarouselItem({ className, ...props }: React.ComponentProps<'div'>) {
       aria-roledescription="slide"
       data-slot="carousel-item"
       className={cn(
-        'min-w-0 shrink-0 grow-0 basis-full',
-        orientation === 'horizontal' ? 'pl-4' : 'pt-4',
+        'mdxui:min-w-0 mdxui:shrink-0 mdxui:grow-0 mdxui:basis-full',
+        orientation === 'horizontal' ? 'mdxui:pl-4' : 'mdxui:pt-4',
         className,
       )}
       {...props}
@@ -174,10 +178,10 @@ function CarouselPrevious({
       variant={variant}
       size={size}
       className={cn(
-        'absolute size-8 rounded-full',
+        'mdxui:absolute mdxui:size-8 mdxui:rounded-full',
         orientation === 'horizontal'
-          ? 'top-1/2 -left-12 -translate-y-1/2'
-          : '-top-12 left-1/2 -translate-x-1/2 rotate-90',
+          ? 'mdxui:top-1/2 mdxui:-left-12 mdxui:-translate-y-1/2'
+          : 'mdxui:-top-12 mdxui:left-1/2 mdxui:-translate-x-1/2 mdxui:rotate-90',
         className,
       )}
       disabled={!canScrollPrev}
@@ -185,7 +189,7 @@ function CarouselPrevious({
       {...props}
     >
       <ArrowLeft />
-      <span className="sr-only">Previous slide</span>
+      <span className="mdxui:sr-only">Previous slide</span>
     </Button>
   );
 }
@@ -204,10 +208,10 @@ function CarouselNext({
       variant={variant}
       size={size}
       className={cn(
-        'absolute size-8 rounded-full',
+        'mdxui:absolute mdxui:size-8 mdxui:rounded-full',
         orientation === 'horizontal'
-          ? 'top-1/2 -right-12 -translate-y-1/2'
-          : '-bottom-12 left-1/2 -translate-x-1/2 rotate-90',
+          ? 'mdxui:top-1/2 mdxui:-right-12 mdxui:-translate-y-1/2'
+          : 'mdxui:-bottom-12 mdxui:left-1/2 mdxui:-translate-x-1/2 mdxui:rotate-90',
         className,
       )}
       disabled={!canScrollNext}
@@ -215,7 +219,7 @@ function CarouselNext({
       {...props}
     >
       <ArrowRight />
-      <span className="sr-only">Next slide</span>
+      <span className="mdxui:sr-only">Next slide</span>
     </Button>
   );
 }

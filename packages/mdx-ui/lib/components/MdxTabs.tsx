@@ -35,20 +35,25 @@ export function MdxTabs({ children }: { children: ReactNode }) {
 
   if (tabs.length === 0) {
     console.error('MdxTabs requires at least one child to create tabs');
-    return <p className="text-destructive">MdxTabs requires at least one child to create tabs.</p>;
+    return (
+      <p className="mdxui:text-destructive">MdxTabs requires at least one child to create tabs.</p>
+    );
   }
 
   return (
-    <Tabs defaultValue="tab-0" className="w-full my-4 rounded-lg border px-4 py-3">
+    <Tabs
+      defaultValue="tab-0"
+      className="mdxui:w-full mdxui:my-4 mdxui:rounded-lg mdxui:border mdxui:px-4 mdxui:py-3"
+    >
       <TabsList>
         {tabs.map((tab, i) => (
-          <TabsTrigger key={i} value={`tab-${i}`} className="bg-transparent">
+          <TabsTrigger key={i} value={`tab-${i}`} className="mdxui:bg-transparent">
             {tab.label}
           </TabsTrigger>
         ))}
       </TabsList>
       {tabs.map((tab, i) => (
-        <TabsContent key={i} value={`tab-${i}`} className="prose dark:prose-invert">
+        <TabsContent key={i} value={`tab-${i}`} className="mdxui:prose mdxui:dark:prose-invert">
           {tab.content}
         </TabsContent>
       ))}

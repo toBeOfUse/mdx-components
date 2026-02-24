@@ -38,13 +38,13 @@ function TooltipContent({
         data-slot="tooltip-content"
         sideOffset={sideOffset}
         className={cn(
-          'bg-foreground text-background animate-in fade-in-0 zoom-in-95 data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 z-50 w-fit origin-(--radix-tooltip-content-transform-origin) rounded-md px-3 py-1.5 text-xs text-balance',
+          'mdxui:bg-foreground mdxui:text-background mdxui:animate-in mdxui:fade-in-0 mdxui:zoom-in-95 mdxui:data-[state=closed]:animate-out mdxui:data-[state=closed]:fade-out-0 mdxui:data-[state=closed]:zoom-out-95 mdxui:data-[side=bottom]:slide-in-from-top-2 mdxui:data-[side=left]:slide-in-from-right-2 mdxui:data-[side=right]:slide-in-from-left-2 mdxui:data-[side=top]:slide-in-from-bottom-2 mdxui:z-50 mdxui:w-fit mdxui:origin-(--radix-tooltip-content-transform-origin) mdxui:rounded-md mdxui:px-3 mdxui:py-1.5 mdxui:text-xs mdxui:text-balance',
           className,
         )}
         {...props}
       >
         {children}
-        <TooltipPrimitive.Arrow className="bg-foreground fill-foreground z-50 size-2.5 translate-y-[calc(-50%_-_2px)] rotate-45 rounded-[2px]" />
+        <TooltipPrimitive.Arrow className="mdxui:bg-foreground mdxui:fill-foreground mdxui:z-50 mdxui:size-2.5 mdxui:translate-y-[calc(-50%_-_2px)] mdxui:rotate-45 mdxui:rounded-[2px]" />
       </TooltipPrimitive.Content>
     </TooltipPrimitive.Portal>
   );

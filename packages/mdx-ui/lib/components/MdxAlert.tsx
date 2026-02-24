@@ -26,11 +26,11 @@ function MdxAlertBase({
   const descriptionChildren = childArray.slice(hrLocation + (hrFound ? 1 : 0));
 
   return (
-    <Alert variant={variant} className="my-4">
+    <Alert variant={variant} className="mdxui:my-4">
       {icons[variant]}
-      {titleChildren.length > 0 && <AlertTitle className="*:m-0">{titleChildren}</AlertTitle>}
+      {titleChildren.length > 0 && <AlertTitle className="mdxui:*:m-0">{titleChildren}</AlertTitle>}
       {descriptionChildren.length > 0 && (
-        <AlertDescription className="prose dark:prose-invert">
+        <AlertDescription className="mdxui:prose mdxui:dark:prose-invert">
           {descriptionChildren}
         </AlertDescription>
       )}

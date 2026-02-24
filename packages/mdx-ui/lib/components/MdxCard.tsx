@@ -26,17 +26,19 @@ export function MdxCard({ children }: { children: ReactNode }) {
   const contentChildren = childArray.slice(hrLocation + (hrFound ? 1 : 0));
 
   return (
-    <Card className="my-4">
+    <Card className="mdxui:my-4">
       {headerChildren.length > 0 && (
         <CardHeader>
-          <CardTitle className="*:m-0 prose dark:prose-invert">{headerChildren[0]}</CardTitle>
-          <CardDescription className="prose dark:prose-invert *:m-0">
+          <CardTitle className="mdxui:*:m-0 mdxui:prose mdxui:dark:prose-invert">
+            {headerChildren[0]}
+          </CardTitle>
+          <CardDescription className="mdxui:prose mdxui:dark:prose-invert mdxui:*:m-0">
             {...headerChildren.slice(1)}
           </CardDescription>
         </CardHeader>
       )}
       {contentChildren.length > 0 && (
-        <CardContent className="prose dark:prose-invert">{contentChildren}</CardContent>
+        <CardContent className="mdxui:prose mdxui:dark:prose-invert">{contentChildren}</CardContent>
       )}
     </Card>
   );
@@ -72,16 +74,18 @@ export function MdxCardSet({ children }: { children: ReactNode }) {
 
   return (
     <div
-      className="flex flex-row gap-4 overflow-x-auto py-2 my-4"
+      className="mdxui:flex mdxui:flex-row mdxui:gap-4 mdxui:overflow-x-auto mdxui:py-2 mdxui:my-4"
       style={{ scrollbarWidth: 'thin' }}
     >
       {cards.map(({ header, content }, i) => (
-        <Card key={i} className="min-w-64 max-w-[80%] shrink-0 gap-2">
-          <CardHeader className="pb-0">
-            <CardTitle className="*:m-0 prose dark:prose-invert">{header}</CardTitle>
+        <Card key={i} className="mdxui:min-w-64 mdxui:max-w-[80%] mdxui:shrink-0 mdxui:gap-2">
+          <CardHeader className="mdxui:pb-0">
+            <CardTitle className="mdxui:*:m-0 mdxui:prose mdxui:dark:prose-invert">
+              {header}
+            </CardTitle>
           </CardHeader>
           {content.length > 0 && (
-            <CardContent className="prose dark:prose-invert">{content}</CardContent>
+            <CardContent className="mdxui:prose mdxui:dark:prose-invert">{content}</CardContent>
           )}
         </Card>
       ))}

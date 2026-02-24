@@ -34,17 +34,19 @@ export function MdxPopover({
   const normalChildren = childArray.slice(hrLocation + (hrFound ? 1 : 0));
 
   return (
-    <div className="py-6 flex justify-center">
+    <div className="mdxui:py-6 mdxui:flex mdxui:justify-center">
       <Popover defaultOpen={defaultOpen}>
         <PopoverTrigger asChild>
           <Button
-            className="cursor-pointer outline-none border-solid border-border bg-transparent hover:bg-muted"
+            className="mdxui:cursor-pointer mdxui:outline-none mdxui:border-solid mdxui:border-border mdxui:bg-transparent mdxui:hover:bg-muted"
             variant="secondary"
           >
             {trigger}
           </Button>
         </PopoverTrigger>
-        <PopoverContent className="w-80 prose dark:prose-invert">{normalChildren}</PopoverContent>
+        <PopoverContent className="mdxui:w-80 mdxui:prose mdxui:dark:prose-invert">
+          {normalChildren}
+        </PopoverContent>
       </Popover>
     </div>
   );

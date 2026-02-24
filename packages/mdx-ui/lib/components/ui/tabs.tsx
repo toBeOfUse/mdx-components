@@ -14,19 +14,22 @@ function Tabs({
       data-slot="tabs"
       data-orientation={orientation}
       orientation={orientation}
-      className={cn('group/tabs flex gap-2 data-[orientation=horizontal]:flex-col', className)}
+      className={cn(
+        'mdxui:group/tabs mdxui:flex mdxui:gap-2 mdxui:data-[orientation=horizontal]:flex-col',
+        className,
+      )}
       {...props}
     />
   );
 }
 
 const tabsListVariants = cva(
-  'rounded-lg p-[3px] group-data-[orientation=horizontal]/tabs:h-9 data-[variant=line]:rounded-none group/tabs-list text-muted-foreground inline-flex w-fit items-center justify-center group-data-[orientation=vertical]/tabs:h-fit group-data-[orientation=vertical]/tabs:flex-col',
+  'mdxui:rounded-lg mdxui:p-[3px] mdxui:group-data-[orientation=horizontal]/tabs:h-9 mdxui:data-[variant=line]:rounded-none mdxui:group/tabs-list mdxui:text-muted-foreground mdxui:inline-flex mdxui:w-fit mdxui:items-center mdxui:justify-center mdxui:group-data-[orientation=vertical]/tabs:h-fit mdxui:group-data-[orientation=vertical]/tabs:flex-col',
   {
     variants: {
       variant: {
-        default: 'bg-muted',
-        line: 'gap-1 bg-transparent',
+        default: 'mdxui:bg-muted',
+        line: 'mdxui:gap-1 mdxui:bg-transparent',
       },
     },
     defaultVariants: {
@@ -55,10 +58,10 @@ function TabsTrigger({ className, ...props }: React.ComponentProps<typeof TabsPr
     <TabsPrimitive.Trigger
       data-slot="tabs-trigger"
       className={cn(
-        "focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:outline-ring text-foreground/60 hover:text-foreground dark:text-muted-foreground dark:hover:text-foreground relative inline-flex h-[calc(100%-1px)] flex-1 items-center justify-center gap-1.5 rounded-md border border-transparent px-2 py-1 text-sm font-medium whitespace-nowrap transition-all group-data-[orientation=vertical]/tabs:w-full group-data-[orientation=vertical]/tabs:justify-start focus-visible:ring-[3px] focus-visible:outline-1 disabled:pointer-events-none disabled:opacity-50 group-data-[variant=default]/tabs-list:data-[state=active]:shadow-sm group-data-[variant=line]/tabs-list:data-[state=active]:shadow-none [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
-        'group-data-[variant=line]/tabs-list:bg-transparent group-data-[variant=line]/tabs-list:data-[state=active]:bg-transparent dark:group-data-[variant=line]/tabs-list:data-[state=active]:border-transparent dark:group-data-[variant=line]/tabs-list:data-[state=active]:bg-transparent',
-        'data-[state=active]:bg-background dark:data-[state=active]:text-foreground dark:data-[state=active]:border-input dark:data-[state=active]:bg-input/30 data-[state=active]:text-foreground',
-        'after:bg-foreground after:absolute after:opacity-0 after:transition-opacity group-data-[orientation=horizontal]/tabs:after:inset-x-0 group-data-[orientation=horizontal]/tabs:after:bottom-[-5px] group-data-[orientation=horizontal]/tabs:after:h-0.5 group-data-[orientation=vertical]/tabs:after:inset-y-0 group-data-[orientation=vertical]/tabs:after:-right-1 group-data-[orientation=vertical]/tabs:after:w-0.5 group-data-[variant=line]/tabs-list:data-[state=active]:after:opacity-100',
+        'mdxui:focus-visible:border-ring mdxui:focus-visible:ring-ring/50 mdxui:focus-visible:outline-ring mdxui:text-foreground/60 mdxui:hover:text-foreground mdxui:dark:text-muted-foreground mdxui:dark:hover:text-foreground mdxui:relative mdxui:inline-flex mdxui:h-[calc(100%-1px)] mdxui:flex-1 mdxui:items-center mdxui:justify-center mdxui:gap-1.5 mdxui:rounded-md mdxui:border mdxui:border-transparent mdxui:px-2 mdxui:py-1 mdxui:text-sm mdxui:font-medium mdxui:whitespace-nowrap mdxui:transition-all mdxui:group-data-[orientation=vertical]/tabs:w-full mdxui:group-data-[orientation=vertical]/tabs:justify-start mdxui:focus-visible:ring-[3px] mdxui:focus-visible:outline-1 mdxui:disabled:pointer-events-none mdxui:disabled:opacity-50 mdxui:group-data-[variant=default]/tabs-list:data-[state=active]:shadow-sm mdxui:group-data-[variant=line]/tabs-list:data-[state=active]:shadow-none mdxui:[&_svg]:pointer-events-none mdxui:[&_svg]:shrink-0 mdxui:[&_svg:not([class*=size-])]:size-4',
+        'mdxui:group-data-[variant=line]/tabs-list:bg-transparent mdxui:group-data-[variant=line]/tabs-list:data-[state=active]:bg-transparent mdxui:dark:group-data-[variant=line]/tabs-list:data-[state=active]:border-transparent mdxui:dark:group-data-[variant=line]/tabs-list:data-[state=active]:bg-transparent',
+        'mdxui:data-[state=active]:bg-background mdxui:dark:data-[state=active]:text-foreground mdxui:dark:data-[state=active]:border-input mdxui:dark:data-[state=active]:bg-input/30 mdxui:data-[state=active]:text-foreground',
+        'mdxui:after:bg-foreground mdxui:after:absolute mdxui:after:opacity-0 mdxui:after:transition-opacity mdxui:group-data-[orientation=horizontal]/tabs:after:inset-x-0 mdxui:group-data-[orientation=horizontal]/tabs:after:bottom-[-5px] mdxui:group-data-[orientation=horizontal]/tabs:after:h-0.5 mdxui:group-data-[orientation=vertical]/tabs:after:inset-y-0 mdxui:group-data-[orientation=vertical]/tabs:after:-right-1 mdxui:group-data-[orientation=vertical]/tabs:after:w-0.5 mdxui:group-data-[variant=line]/tabs-list:data-[state=active]:after:opacity-100',
         className,
       )}
       {...props}
@@ -70,7 +73,7 @@ function TabsContent({ className, ...props }: React.ComponentProps<typeof TabsPr
   return (
     <TabsPrimitive.Content
       data-slot="tabs-content"
-      className={cn('flex-1 outline-none', className)}
+      className={cn('mdxui:flex-1 mdxui:outline-none', className)}
       {...props}
     />
   );

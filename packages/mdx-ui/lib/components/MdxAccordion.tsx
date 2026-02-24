@@ -43,13 +43,15 @@ export function MdxAccordion({
       type="single"
       collapsible
       defaultValue={defaultOpen ? 'item-1' : undefined}
-      className="w-full border border-border px-4 rounded-lg my-4"
+      className="mdxui:w-full mdxui:border mdxui:border-border mdxui:px-4 mdxui:rounded-lg mdxui:my-4"
     >
       <AccordionItem value="item-1">
-        <AccordionTrigger className="text-sm p-0 bg-transparent border-none outline-none *:m-0 *:inline">
+        <AccordionTrigger className="mdxui:text-sm mdxui:p-0 mdxui:bg-transparent mdxui:border-none mdxui:outline-none mdxui:*:m-0 mdxui:*:inline">
           {header}
         </AccordionTrigger>
-        <AccordionContent className="prose dark:prose-invert">{normalChildren}</AccordionContent>
+        <AccordionContent className="mdxui:prose mdxui:dark:prose-invert">
+          {normalChildren}
+        </AccordionContent>
       </AccordionItem>
     </Accordion>
   );

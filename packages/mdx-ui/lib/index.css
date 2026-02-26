@@ -1,8 +1,8 @@
-@layer mdxuitheme, mdxuibase, mdxuiutilities;
+@layer mdxuitheme, mdxuibase;
 @import "tailwindcss/theme.css" layer(mdxuitheme) prefix(mdxui);
 /* note: not importing preflight so as not to conflict with whatever styles the
 user is already using to format their mdx files */
-@import "tailwindcss/utilities.css" layer(mdxuiutilities) prefix(mdxui);
+@import "tailwindcss/utilities.css" prefix(mdxui);
 
 @plugin "@tailwindcss/typography";
 @import 'tw-animate-css';

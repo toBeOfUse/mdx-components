@@ -97,16 +97,24 @@ function App() {
         ref={stepsRef}
         className={`${styles.stepsSection} ${stepsInView ? styles.inView : ''}`}
       >
-        <h2 className={styles.stepsHeading}>The Explanation</h2>
+        <h2 className={styles.stepsHeading}>Some Explanation</h2>
         <ol className={styles.stepsList}>
           <li className={styles.stepItem}>
             <div className={styles.stepNumber}>1</div>
             <div className={styles.stepContent}>
               <h3>Why?</h3>
+              <p style={{ marginBottom: '0.7rem' }}>
+                My goal was to make <strong>simple, useful components</strong> that are{' '}
+                <strong>as easy to use as regular Markdown.</strong>
+              </p>
               <p>
                 <a href="https://mdxjs.com/">MDX</a> is a really cool way to drop React components
-                into something you're writing, but switching between normal words and JSX can be a
-                chore. This library cuts out the boilerplate.
+                into something you're writing, but switching between English and JSX can be a chore.
+                Special formatting like{' '}
+                <a href="https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax#alerts">
+                  Github-flavored Markdown's alerts
+                </a>{' '}
+                can be cool, but the syntax is an eyesore. This library cuts out the boilerplate.
               </p>
             </div>
           </li>
@@ -124,7 +132,7 @@ function App() {
           <li className={styles.stepItem}>
             <div className={styles.stepNumber}>3</div>
             <div className={styles.stepContent}>
-              <h3>Let's Go</h3>
+              <h3>Okay, Cool 👍</h3>
               <p>
                 <a href="https://mdxjs.com/docs/getting-started/">
                   Set up a project that uses MDX.
@@ -132,11 +140,11 @@ function App() {
                 Then, in your terminal:
               </p>
               <pre className={styles.stepCode}>npm i @tobeofuse/mdx-ui</pre>
-              <p>In an MDX file:</p>
+              <p>And in an MDX file:</p>
               <pre
                 className={styles.stepCode}
               >{`import { MdxWhatever } from '@tobeofuse/mdx-ui'`}</pre>
-              <p>Elsewhere in the MDX file:</p>
+              {/* <p>Elsewhere in the MDX file:</p> */}
               <pre className={styles.stepCode}>
                 {`<MdxWhatever>\n  Your Content Here\n</MdxWhatever>`}
               </pre>

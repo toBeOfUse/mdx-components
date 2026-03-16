@@ -91,7 +91,7 @@
   height: 100vh;
   display: flex;
   flex-direction: column;
-  padding: 1rem 0 2rem;
+  padding: 0 0 2rem;
 }
 
 .stepsSection {
@@ -226,8 +226,7 @@
 }
 
 .sandboxSection>p {
-  color: var(--muted-foreground);
-  margin-bottom: 1rem;
+  margin: 0.7rem 0;
 }
 
 .snippetButtons {
